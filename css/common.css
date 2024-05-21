@@ -29,3 +29,13 @@ body {
   height: auto;
   display: block;
 }
+
+.gallery-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-flexbox li {
+  flex: 1 0 calc(33.33% - 10px);
+}
