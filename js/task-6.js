@@ -19,7 +19,7 @@ function createBoxes(amount) {
 
 function destroyBoxes() {
   const boxesContainer = document.querySelector('#boxes');
-  boxesContainer.innerHTML = ''; // Clear all boxes
+  boxesContainer.innerHTML = ''; 
 }
 
 document.querySelector('[data-create]').addEventListener('click', () => {
@@ -27,7 +27,7 @@ document.querySelector('[data-create]').addEventListener('click', () => {
   const amount = parseInt(input.value, 10);
   if (amount >= 1 && amount <= 100) {
     createBoxes(amount);
-    input.value = ''; // Clear input
+    input.value = ''; 
   } else {
     alert('Please enter a number between 1 and 100.');
   }
