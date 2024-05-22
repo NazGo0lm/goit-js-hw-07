@@ -1,11 +1,10 @@
-
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
 }
 
 function createBoxes(amount) {
   const boxesContainer = document.querySelector('#boxes');
-  boxesContainer.innerHTML = ''; 
+  const fragment = document.createDocumentFragment(); 
 
   for (let i = 0; i < amount; i++) {
     const size = 30 + i * 10;
@@ -13,13 +12,16 @@ function createBoxes(amount) {
     box.style.width = `${size}px`;
     box.style.height = `${size}px`;
     box.style.backgroundColor = getRandomHexColor();
-    boxesContainer.appendChild(box);
+    fragment.appendChild(box);
   }
+
+  boxesContainer.innerHTML = ''; 
+  boxesContainer.appendChild(fragment);
 }
 
 function destroyBoxes() {
   const boxesContainer = document.querySelector('#boxes');
-  boxesContainer.innerHTML = ''; 
+  boxesContainer.innerHTML = '';
 }
 
 document.querySelector('[data-create]').addEventListener('click', () => {
@@ -27,7 +29,7 @@ document.querySelector('[data-create]').addEventListener('click', () => {
   const amount = parseInt(input.value, 10);
   if (amount >= 1 && amount <= 100) {
     createBoxes(amount);
-    input.value = ''; 
+    input.value = '';
   } else {
     alert('Please enter a number between 1 and 100.');
   }
